@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+    nginx:
+        build:
+            context: ./
+            dockerfile: ./build/nginx/Dockerfile
+        ports:
+            - 8080:80
+        volumes:
+            - ./app:/var/www/html
+        networks:
+            - appnet
+
+networks:
+    appnet:
+        driver: bridge
